@@ -9,7 +9,7 @@ start = pd.to_datetime("2017-01-01")
 end = pd.to_datetime("2021-01-01")
 
 print("Welcome to the portfolio allocation tool \n"
-      "Enter stocks with the ones you like the most at first \n"
+      "Enter the stocks that you like \n"
       "Then, let us give you a great portfolio with 5\n"
       "Write DONE when you are done")
 
@@ -188,17 +188,14 @@ for stock_d, allo in zip((tickers1a,tickers2a,tickers3a,tickers4a,tickers5a),[.1
 for stock_d in (tickers1a,tickers2a,tickers3a,tickers4a,tickers5a):
     stock_d["Position Values"] = stock_d["Allocation"] * 10000000
 
-
 all_pos_vals = [tickers1a["Position Values"],tickers2a["Position Values"],tickers3a["Position Values"],tickers4a["Position Values"],tickers5a["Position Values"]]
 portfolio_val = pd.concat(all_pos_vals,axis=1)
 portfolio_val.columns = [f"{tickers1} Pos",f"{tickers2} Pos",f"{tickers3} Pos",f"{tickers4} Pos",f"{tickers5} Pos"]
 portfolio_val["Total Pos"] = portfolio_val.sum(axis=1)
 
-
 portfolio_val["Total Pos"].plot(figsize=(10,8))
 plt.title("Total Portfolio Value")
 plt.show()
-
 
 plt.plot(tickers1a["Std"],tickers1a["Normed Return"],label=tickers1)
 plt.plot(tickers2a["Std"],tickers2a["Normed Return"],label=tickers2)
